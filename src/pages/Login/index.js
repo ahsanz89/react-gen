@@ -1,7 +1,11 @@
-import React from 'react'
+import React from 'react' 
+import { Button } from '../../components'
 
 export default function Login() {
   return (
-    <div>Login</div>
+    <>
+    Login Page <br />
+    <Button />
+    </>
   )
 }
