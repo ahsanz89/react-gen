@@ -1,0 +1,8 @@
+[
+    {
+        "path": "/users",
+        "element": "User",
+        "exact": true,
+        "label":"User Management"
+    }
+]

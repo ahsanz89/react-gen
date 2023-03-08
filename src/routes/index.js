@@ -1,22 +1,25 @@
-import { createBrowserRouter } from "react-router-dom";
-import { Layout } from "../layout";
-import { Dashboard, ErrorPage, User } from "../pages";
+import { Layout } from '../layout';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { ErrorPage } from '../pages';
+import { useRoutes } from '../hooks';
+import { routes as ROUTES } from '../data/constant';
+ 
 
-export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Layout/>,
-      errorElement: <ErrorPage />,
-      // loader: rootLoader,
-      children: [
-        {
-          path: "dashboard",
-          element: <Dashboard />,
-        },
-        {
-          path: "users",
-          element: <User />,
-        },
-      ],
-    },
-  ]);
+
+function Routes() {
+  const routes  = useRoutes(ROUTES.GET_ROUTES)
+  console.log(routes)
+  const router = createBrowserRouter([{
+    path: "/",
+    element: <Layout/>,
+    errorElement: <ErrorPage />,
+    // loader: rootLoader,
+    children: routes,
+  },
+]);
+  return (
+    <RouterProvider router={router} />
+  );
+}
+
+export default Routes;

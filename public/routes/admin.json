@@ -1,0 +1,8 @@
+[
+    {
+        "path": "/dashboard",
+        "element": "Dashboard",
+        "exact": true,
+        "label":"Dashboard"
+    }
+]
