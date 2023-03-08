@@ -32,7 +32,8 @@ const useRoutes = (returnedValue = "") => {
     const getSideBarLinks = (routes) => routes.map(route => {
         return {
             label: route.label,
-            path: route.path
+            path: route.path,
+            sub_menu: route.children || []
         }
     })
 
