@@ -21,10 +21,10 @@ const useRoutes = (returnedValue = "") => {
     }, [])
     const getRoutesComponent = (routes) => routes.map(route => {
         // layout and pages creation
-        const GenaricComponent = route.element === "Layout" ? Layout[route.element] : Component[route.element]
+        const GenaricComponent = route.element === ROUTES.DEFAULT_LAYOUT_COMPONENT ? Layout[route.element] : Component[route.element]
         route.element = <GenaricComponent />;
         // set error component
-        const ErrorComponent = Component[route.errorElement];
+        const ErrorComponent = Component[route.errorElement] || Component[ROUTES.DEFAULT_ERROR_COMPONENT];
         route.errorElement = <ErrorComponent />
         return route;
     })
