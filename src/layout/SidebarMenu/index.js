@@ -5,7 +5,6 @@ import { routes as ROUTES } from "../../data/constant"
 import { Link } from 'react-router-dom';
 export default function SidebarMenu() {
   const sidebarMenu = useRoutes(ROUTES.GET_SIDEBAR_MENU)
-  console.log(sidebarMenu)
   return (
     <Sidebar>
       <Menu>

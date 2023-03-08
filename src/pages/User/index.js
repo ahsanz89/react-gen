@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react' 
 
 export default function User() {
   return (
-    <div>User</div>
+    <div>This is User child 1 </div>
   )
 }

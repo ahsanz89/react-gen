@@ -11,18 +11,35 @@ const useRoutes = (returnedValue = "") => {
 
     useEffect(() => {
         async function fetchRoutesData() {
-            const { data } = await axios.get('/routes/admin.json');
-            const sidebarLinks = getSideBarLinks(data);
-            const routes = getRoutesComponent(data);
+            const { data } = await axios.get('/routes/user.json'); 
+            const sidebarLinks = getSideBarLinks(data[0].children || []);
+            let routes = [];
+            data.map(route=>{
+                routes.push(route)
+                routes = [...routes,...getChild(route.children || [])].flat()
+                return routes
+            }) 
+            routes = getRoutesComponent(routes);
+            console.log(routes)
             setRoutes(routes);
             setSidebarMenu(sidebarLinks);
         }
         fetchRoutesData()
     }, [])
-    const getRoutesComponent = (routes) => routes.map(route => {
+ 
+    function getChild(routes){ 
+        return routes.map(route => {
+            if(route.children && route.children.length>0){
+                return route.children
+            }
+            return route
+        })
+    }
+
+    const getRoutesComponent = (routes) => routes.map(route => { 
         // layout and pages creation
         const GenaricComponent = route.element === ROUTES.DEFAULT_LAYOUT_COMPONENT ? Layout[route.element] : Component[route.element]
-        route.element = <GenaricComponent />;
+        route.element = <GenaricComponent />; 
         // set error component
         const ErrorComponent = Component[route.errorElement] || Component[ROUTES.DEFAULT_ERROR_COMPONENT];
         route.errorElement = <ErrorComponent />

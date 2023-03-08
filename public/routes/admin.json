@@ -4,7 +4,6 @@
         "element": "Layout",
         "errorElement":"ErrorPage",
         "exact": false,
-        "label": "Dashboard",
         "children": [
             {
                 "path": "/dashboard",
@@ -13,10 +12,23 @@
                 "label": "Dashboard"
             },
             {
-                "path": "/users",
-                "element": "User",
-                "exact": true,
-                "label":"User Management"
+                "path": "/", 
+                "exact": false, 
+                "label":"User Management",
+                "children":[
+                    {
+                        "path": "/user",
+                        "element": "User",
+                        "exact": true,
+                        "label":"User Child 1"
+                    },
+                    {
+                        "path": "/userschild2",
+                        "element": "UserChild2",
+                        "exact": true,
+                        "label":"User Child 2"
+                    }
+                ]
             }
         ]
     }
