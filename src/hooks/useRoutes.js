@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios"
 import { routes as ROUTES } from '../data/constant';
 import * as Component from '../pages';
+import * as Layout from "../layout"
 
 const useRoutes = (returnedValue = "") => {
     const [routes, setRoutes] = useState([]);
@@ -19,8 +20,12 @@ const useRoutes = (returnedValue = "") => {
         fetchRoutesData()
     }, [])
     const getRoutesComponent = (routes) => routes.map(route => {
-        const GenaricComponent = Component[route.element]
+        // layout and pages creation
+        const GenaricComponent = route.element === "Layout" ? Layout[route.element] : Component[route.element]
         route.element = <GenaricComponent />;
+        // set error component
+        const ErrorComponent = Component[route.errorElement];
+        route.errorElement = <ErrorComponent />
         return route;
     })
 
