@@ -1,11 +1,18 @@
-import React from 'react' 
-import { Button } from '../../components'
+import React from "react";
+import { useDispatch } from "react-redux";
+import { setAuthToken } from "../../app/features/auth/authSlice";
+
 
 export default function Login() {
+  const dispatch = useDispatch();
+  const doLogin = () => {
+    let token = true;
+    dispatch(setAuthToken(token));
+    localStorage.setItem("user", token);
+  };
   return (
-    <>
-    Login Page <br />
-    <Button />
-    </>
-  )
+    <button onClick={doLogin}>
+      Sign In
+    </button>
+  );
 }
