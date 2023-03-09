@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
-import axios from "axios"
 import { routes as ROUTES } from '../data/constant';
 import * as Component from '../pages';
 import * as Layout from "../layout"
+import { getRoutes } from "../services/Routes";
 
 const useRoutes = (returnedValue = "") => {
     const [routes, setRoutes] = useState([]);
@@ -18,7 +18,7 @@ const useRoutes = (returnedValue = "") => {
 
     useEffect(() => {
         async function fetchRoutesData() {
-            const { data } = await axios.get('/routes/admin.json');
+            const data= await getRoutes(); 
             const findLayoutIndex = data.findIndex(d=>d.element === ROUTES.DEFAULT_LAYOUT_COMPONENT);
             const sidebarLinks = getSideBarLinks(data[findLayoutIndex].children || []);
             let routes = getAllRoutes(data); 
