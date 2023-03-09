@@ -1,0 +1,35 @@
+[
+    {
+        "path": "/",
+        "element": "Layout",
+        "errorElement": "ErrorPage",
+        "exact": false,
+        "children": [
+            {
+                "path": "/dashboard",
+                "element": "Dashboard",
+                "exact": true,
+                "label": "Dashboard"
+            },
+            {
+                "path": "/",
+                "exact": false,
+                "label": "User Management",
+                "children": [
+                    {
+                        "path": "/user",
+                        "element": "User",
+                        "exact": true,
+                        "label": "User Child 1"
+                    },
+                    {
+                        "path": "/userschild2",
+                        "element": "UserChild2",
+                        "exact": true,
+                        "label": "User Child 2"
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,1 @@
+export const GET_ROUTES = "/routes/admin.json";
